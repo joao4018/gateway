@@ -38,5 +38,5 @@ springdoc:
         url: /v3/api-docs/auth
 
 ribbon:
-  ReadTimeout: 10000000
-  ConnectTimeout: 10000000
+  ReadTimeout: 2147483647
+  ConnectTimeout: 2147483647
