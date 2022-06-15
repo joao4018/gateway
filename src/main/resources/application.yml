@@ -4,6 +4,7 @@ server-gateway:
   port: ${PORT:8080}
 eureka:
   client:
+    fetch-registry: true
     serviceUrl:
       defaultZone: https://secret-anchorage-03030.herokuapp.com/eureka/
 
@@ -40,3 +41,8 @@ springdoc:
 ribbon:
   ReadTimeout: 2147483647
   ConnectTimeout: 2147483647
+
+niws:
+  loadbalancer:
+    availabilityFilteringRule:
+      activeConnectionsLimit: 2147483647
