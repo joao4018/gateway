@@ -24,6 +24,7 @@ spring:
           predicates:
             - Path=/auth/**
           filters:
+#            - EncryptDecryptFilter
             - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
             - RewritePath=/auth/(?<path>.*), /$\{path}
         - id: openapi
@@ -31,6 +32,7 @@ spring:
           predicates:
             - Path=/v3/api-docs/**
           filters:
+#            - EncryptDecryptFilter
             - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
             - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
 
