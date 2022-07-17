@@ -15,7 +15,7 @@ logging:
 spring:
   cloud:
     gateway:
-     globalcors:
+      globalcors:
         corsConfigurations:
           '[/**]':
             allowedOrigins: "*"
