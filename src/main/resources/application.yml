@@ -25,13 +25,14 @@ spring:
             - Path=/auth/**
           filters:
             - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
-
+            - RewritePath=/auth/(?<path>.*), /$\{path}
         - id: openapi
           uri: https://fast-lake-01538.herokuapp.com
           predicates:
             - Path=/v3/api-docs/**
           filters:
             - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
 
 springdoc:
   swagger-ui:
