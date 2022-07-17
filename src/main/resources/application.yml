@@ -15,8 +15,6 @@ logging:
 spring:
   cloud:
     gateway:
-      default-filters:
-        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
       discovery:
         locator:
           enabled: true
@@ -26,6 +24,7 @@ spring:
           predicates:
             - Path=/auth/**
           filters:
+            - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
             - RewritePath=/auth/(?<path>.*), /$\{path}
         - id: openapi
           uri: https://fast-lake-01538.herokuapp.com
