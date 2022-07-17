@@ -18,6 +18,7 @@ public class CORSConfiguration implements WebFluxConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowCredentials(true)
+                .allowedOrigins("*")
                 .allowedHeaders("*")
                 .allowedMethods("*")
                 .exposedHeaders(HttpHeaders.SET_COOKIE);
@@ -29,6 +30,7 @@ public class CORSConfiguration implements WebFluxConfigurer {
         corsConfiguration.setAllowCredentials(true);
         corsConfiguration.addAllowedHeader("*");
         corsConfiguration.addAllowedMethod("*");
+        corsConfiguration.addAllowedOrigin("*");
         corsConfiguration.addExposedHeader(HttpHeaders.SET_COOKIE);
         UrlBasedCorsConfigurationSource corsConfigurationSource = new UrlBasedCorsConfigurationSource();
         corsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
