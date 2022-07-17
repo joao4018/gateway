@@ -24,4 +24,16 @@ public class CORSConfiguration implements WebFluxConfigurer {
                 .exposedHeaders(HttpHeaders.SET_COOKIE);
     }
 
+    @Bean
+    public CorsWebFilter corsWebFilter() {
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.setAllowCredentials(true);
+        corsConfiguration.addAllowedHeader("https://personal-project-jj.herokuapp.com");
+        corsConfiguration.addAllowedMethod("*");
+        corsConfiguration.addAllowedOrigin("*");
+        corsConfiguration.addExposedHeader(HttpHeaders.SET_COOKIE);
+        UrlBasedCorsConfigurationSource corsConfigurationSource = new UrlBasedCorsConfigurationSource();
+        corsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
+        return new CorsWebFilter(corsConfigurationSource);
+    }
 }
