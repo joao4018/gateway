@@ -34,7 +34,7 @@ spring:
           filters:
 #            - EncryptDecryptFilter
             - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
-            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
+            - RewritePath=/email/(?<path>.*), /$\{path}
         - id: openapi
           uri: https://fast-lake-01538.herokuapp.com
           predicates:
