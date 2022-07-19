@@ -36,13 +36,13 @@ spring:
             - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
             - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
         - id: email
-            uri: https://api-email-jj.herokuapp.com/
-            predicates:
-              - Path=/v3/api-docs/**
-            filters:
-              #            - EncryptDecryptFilter
-              - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
-              - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
+          uri: https://api-email-jj.herokuapp.com/
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            #            - EncryptDecryptFilter
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
 
 springdoc:
   swagger-ui:
