@@ -50,6 +50,8 @@ springdoc:
     urls:
       - name: auth
         url: /v3/api-docs/auth
+      - name: email
+        url: /v3/api-docs/auth
 
 ribbon:
   ReadTimeout: 2147483647
