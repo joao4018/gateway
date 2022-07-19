@@ -30,7 +30,7 @@ spring:
         - id: email
           uri: https://api-email-jj.herokuapp.com/
           predicates:
-            - Path=/v3/api-docs/**
+            - Path=/email/**
           filters:
             #            - EncryptDecryptFilter
             - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
