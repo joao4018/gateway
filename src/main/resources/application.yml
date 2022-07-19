@@ -30,9 +30,9 @@ spring:
         - id: email
           uri: https://api-email-jj.herokuapp.com/
           predicates:
-            - Path=/sendMail/**
+            - Path=/email/**
           filters:
-            #            - EncryptDecryptFilter
+#            - EncryptDecryptFilter
             - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
             - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
         - id: openapi
@@ -51,7 +51,7 @@ springdoc:
       - name: auth
         url: /v3/api-docs/auth
       - name: email
-        url: /v3/api-docs/sendMail
+        url: /v3/api-docs/email
 
 ribbon:
   ReadTimeout: 2147483647
