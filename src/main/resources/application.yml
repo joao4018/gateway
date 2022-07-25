@@ -13,8 +13,6 @@ logging:
     console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
 
 spring:
-  application:
-    name: gateway
   cloud:
     gateway:
       discovery:
@@ -22,7 +20,7 @@ spring:
           enabled: true
       routes:
         - id: auth
-          uri: lb://auth
+          uri: https://api-login-all-it.herokuapp.com/
           predicates:
             - Path=/auth/**
           filters:
@@ -30,7 +28,7 @@ spring:
             - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
             - RewritePath=/auth/(?<path>.*), /$\{path}
         - id: email
-          uri: lb://email
+          uri: https://api-email-jj.herokuapp.com/
           predicates:
             - Path=/email/**
           filters:
