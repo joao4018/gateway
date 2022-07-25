@@ -20,7 +20,7 @@ spring:
           enabled: true
       routes:
         - id: auth
-          uri: https://api-login-all-it.herokuapp.com/
+          uri: lb://auth
           predicates:
             - Path=/auth/**
           filters:
@@ -28,7 +28,7 @@ spring:
             - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
             - RewritePath=/auth/(?<path>.*), /$\{path}
         - id: email
-          uri: https://api-email-jj.herokuapp.com/
+          uri: lb://email
           predicates:
             - Path=/email/**
           filters:
