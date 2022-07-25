@@ -20,9 +20,10 @@ spring:
       discovery:
         locator:
           enabled: true
+          lower-case-service-id: true
       routes:
         - id: auth
-          uri: https://api-login-all-it.herokuapp.com/
+          uri: lb://auth
           predicates:
             - Path=/auth/**
           filters:
