@@ -20,13 +20,16 @@ spring:
   application:
     name: gateway
   cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
     gateway:
       discovery:
         locator:
           enabled: true
       routes:
         - id: auth
-          uri: lb://AUTH
+          uri: https://AUTH/
           predicates:
             - Path=/auth/**
           filters:
