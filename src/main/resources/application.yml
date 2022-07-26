@@ -29,7 +29,7 @@ spring:
           enabled: true
       routes:
         - id: auth
-          uri: https://AUTH/
+          uri: lb://AUTH
           predicates:
             - Path=/auth/**
           filters:
