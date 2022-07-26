@@ -13,10 +13,7 @@ import org.springframework.web.filter.ForwardedHeaderFilter;
  */
 @Configuration
 public class OpenAPIConfiguration {
-    @Bean
-    ForwardedHeaderFilter forwardedHeaderFilter() {
-        return new ForwardedHeaderFilter();
-    }
+
     @Bean
     public OpenAPI openAPI() {
         return new OpenAPI()
