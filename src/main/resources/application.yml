@@ -5,11 +5,12 @@ server-gateway:
 eureka:
   instance:
     hostname: localhost
+    prefer-ip-address: true
   client:
-    registerWithEureka: true
-    fetch-registry: true
-    serviceUrl:
+    service-url:
       defaultZone: https://secret-anchorage-03030.herokuapp.com/eureka/
+    fetch-registry: true
+    register-with-eureka: true
 
 logging:
   pattern:
@@ -25,7 +26,7 @@ spring:
           enabled: true
       routes:
         - id: auth
-          uri: lb://auth
+          uri: lb://AUTH
           predicates:
             - Path=/auth/**
           filters:
