@@ -4,7 +4,7 @@ server-gateway:
   port: ${PORT:8080}
 eureka:
   instance:
-    hostname: api-login-all-it.herokuapp.com
+    hostname: fast-lake-01538.herokuapp.com
   client:
     service-url:
       defaultZone: https://secret-anchorage-03030.herokuapp.com/eureka/
