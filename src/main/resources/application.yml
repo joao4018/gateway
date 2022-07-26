@@ -50,7 +50,7 @@ spring:
             - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
             - RewritePath=/email/(?<path>.*), /$\{path}
         - id: openapi
-          uri: https://fast-lake-01538.herokuapp.com
+          uri: http://fast-lake-01538.herokuapp.com
           predicates:
             - Path=/v3/api-docs/**
           filters:
