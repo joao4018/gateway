@@ -27,8 +27,8 @@ spring:
         corsConfigurations:
           '[/**]':
             allowedOrigins: "*"
-            allowedMethods:
-              - POST
+            allowedHeaders: "*"
+            allowedMethods: "*"
       discovery:
         locator:
           enabled: true
