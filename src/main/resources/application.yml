@@ -42,7 +42,7 @@ spring:
             - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
             - RewritePath=/auth/(?<path>.*), /$\{path}
         - id: email
-          uri: https://api-email-jj.herokuapp.com/
+          uri: lb://EMAIL
           predicates:
             - Path=/email/**
           filters:
