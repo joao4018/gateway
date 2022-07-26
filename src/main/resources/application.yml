@@ -3,7 +3,10 @@ server:
 server-gateway:
   port: ${PORT:8080}
 eureka:
+  instance:
+    hostname: localhost
   client:
+    registerWithEureka: true
     fetch-registry: true
     serviceUrl:
       defaultZone: https://secret-anchorage-03030.herokuapp.com/eureka/
@@ -22,7 +25,7 @@ spring:
           enabled: true
       routes:
         - id: auth
-          uri: lb://AUTH
+          uri: lb://auth
           predicates:
             - Path=/auth/**
           filters:
@@ -54,12 +57,3 @@ springdoc:
         url: /v3/api-docs/auth
       - name: email
         url: /v3/api-docs/email
-
-ribbon:
-  ReadTimeout: 2147483647
-  ConnectTimeout: 2147483647
-
-niws:
-  loadbalancer:
-    availabilityFilteringRule:
-      activeConnectionsLimit: 2147483647
