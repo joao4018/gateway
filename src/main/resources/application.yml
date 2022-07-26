@@ -1,4 +1,6 @@
 server:
+  forward-headers-strategy:
+    framework
   port: 8060
 server-gateway:
   port: ${PORT:8080}
