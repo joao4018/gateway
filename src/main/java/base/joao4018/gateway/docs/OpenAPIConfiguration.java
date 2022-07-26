@@ -20,4 +20,3 @@ public class OpenAPIConfiguration {
                 .addServersItem(new Server().url("/"));
     }
 }
-}
