@@ -18,7 +18,6 @@ import java.util.List;
 
 @SpringBootApplication
 @EnableEurekaClient
-@OpenAPIDefinition(servers = {@Server(url = "/", description = "Default Server URL")})
 public class GatewayApplication {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GatewayApplication.class);
