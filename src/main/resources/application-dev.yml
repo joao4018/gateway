@@ -7,7 +7,7 @@ eureka:
     prefer-ip-address: true
   client:
     service-url:
-      defaultZone: https://secret-anchorage-03030.herokuapp.com/eureka/
+      defaultZone: http://localhost:8080/eureka
     fetch-registry: true
     register-with-eureka: true
 
