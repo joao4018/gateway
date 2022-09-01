@@ -37,7 +37,7 @@ public class PingService {
     public static boolean ping() throws InterruptedException {
         LOGGER.info("ping start");
         List<String> hosts = Arrays.asList("http://api-email-jj.herokuapp.com",
-                                             "http://api-login-all-it.herokuapp.com/",
+                                             "http://api-login-all-it.herokuapp.com",
                                              "http://personal-project-jj.herokuapp.com",
                                              "http://secret-anchorage-03030.herokuapp.com");
 
