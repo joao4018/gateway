@@ -27,10 +27,10 @@ public class PingService {
 
     public static boolean ping() throws InterruptedException {
         LOGGER.info("ping start");
-        List<String> hosts = Arrays.asList("api-email-jj.herokuapp.com",
-                                             "api-login-all-it.herokuapp.com",
-                                             "personal-project-jj.herokuapp.com",
-                                             "secret-anchorage-03030.herokuapp.com");
+        List<String> hosts = Arrays.asList("https://api-email-jj.herokuapp.com",
+                                             "https://api-login-all-it.herokuapp.com/",
+                                             "https://personal-project-jj.herokuapp.com",
+                                             "https://secret-anchorage-03030.herokuapp.com");
 
         while (true){
             extracted(hosts);
