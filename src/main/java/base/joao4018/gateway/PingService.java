@@ -3,14 +3,23 @@ package base.joao4018.gateway;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestOperations;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.sql.Array;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class PingService {
@@ -27,10 +36,10 @@ public class PingService {
 
     public static boolean ping() throws InterruptedException {
         LOGGER.info("ping start");
-        List<String> hosts = Arrays.asList("https://api-email-jj.herokuapp.com",
-                                             "https://api-login-all-it.herokuapp.com/",
-                                             "https://personal-project-jj.herokuapp.com",
-                                             "https://secret-anchorage-03030.herokuapp.com");
+        List<String> hosts = Arrays.asList("http://api-email-jj.herokuapp.com",
+                                             "http://api-login-all-it.herokuapp.com/",
+                                             "http://personal-project-jj.herokuapp.com",
+                                             "http://secret-anchorage-03030.herokuapp.com");
 
         while (true){
             extracted(hosts);
@@ -58,13 +67,27 @@ public class PingService {
     }
 
     public static boolean pingHost(String host, int port, int timeout) {
-        try (Socket socket = new Socket()) {
-            socket.connect(new InetSocketAddress(host, port), timeout);
-            LOGGER.info("Success ping " + host);
-            return true;
-        } catch (IOException e) {
-            LOGGER.error("Failed ping " + host);
-            return false;
-        }
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE);
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+
+        String urlTemplate = UriComponentsBuilder.fromHttpUrl(host)
+                .encode()
+                .toUriString();
+
+        Map<String, ?> params = new HashMap<>();
+
+
+        HttpEntity<String> response = restTemplate.exchange(
+                urlTemplate,
+                HttpMethod.GET,
+                entity,
+                String.class,
+                params
+        );
+        return true;
     }
 }
