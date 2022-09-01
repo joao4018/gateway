@@ -18,7 +18,14 @@ public class PingService {
     private static final Logger LOGGER = LoggerFactory.getLogger(PingService.class);
 
     @Bean
-    public boolean ping() throws InterruptedException {
+    public static void threadteste(){
+        new Thread(t1).start();
+    }
+
+
+
+
+    public static boolean ping() throws InterruptedException {
         LOGGER.info("ping start");
         List<String> hosts = Arrays.asList("api-email-jj.herokuapp.com",
                                              "api-login-all-it.herokuapp.com",
@@ -28,13 +35,23 @@ public class PingService {
         while (true){
             extracted(hosts);
             Thread.sleep(1750000);
-//            Thread.sleep(1000);
         }
 
 
     }
 
-    private void extracted(List<String> hosts) {
+    private static Runnable t1 = new Runnable() {
+        public void run() {
+            try{
+                for(int i=0; i<5; i++){
+                    ping();
+                }
+            } catch (Exception e){}
+
+        }
+    };
+
+    private static void extracted(List<String> hosts) {
         hosts.forEach(host -> {
             pingHost(host, 80, 350);
         });
