@@ -52,9 +52,8 @@ public class PingService {
     private static Runnable t1 = new Runnable() {
         public void run() {
             try{
-                for(int i=0; i<5; i++){
-                    ping();
-                }
+                ping();
+
             } catch (Exception e){}
 
         }
@@ -62,8 +61,8 @@ public class PingService {
 
     private static void extracted(List<String> hosts) {
         hosts.forEach(host -> {
-            pingHost(host, 80, 350);
             System.out.println("ping host" + host);
+            pingHost(host, 80, 350);
         });
     }
 
