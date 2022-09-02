@@ -62,7 +62,13 @@ public class PingService {
     private static void extracted(List<String> hosts) {
         hosts.forEach(host -> {
             System.out.println("ping host" + host);
-            pingHost(host, 80, 350);
+            try {
+                pingHost(host, 80, 350);
+
+            }catch (Exception e){
+                System.out.println("ping host fisnish" + host);
+
+            }
         });
     }
 
@@ -79,6 +85,7 @@ public class PingService {
                 .toUriString();
 
         Map<String, ?> params = new HashMap<>();
+        System.out.println("try ping");
 
 
         HttpEntity<String> response = restTemplate.exchange(
