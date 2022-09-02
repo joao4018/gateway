@@ -63,6 +63,7 @@ public class PingService {
     private static void extracted(List<String> hosts) {
         hosts.forEach(host -> {
             pingHost(host, 80, 350);
+            System.out.println("ping host" + host);
         });
     }
 
@@ -88,6 +89,7 @@ public class PingService {
                 String.class,
                 params
         );
+        System.out.println(response.getBody());
         return true;
     }
 }
