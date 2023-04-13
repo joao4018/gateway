@@ -23,16 +23,22 @@ spring:
       ribbon:
         enabled: false
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods: "*"
       discovery:
         locator:
           enabled: true
       routes:
         - id: auth
-          uri: lb://AUTH
+          uri: http://localhost:8050/
           predicates:
             - Path=/auth/**
           filters:
-#            - EncryptDecryptFilter
+            #            - EncryptDecryptFilter
             - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
             - RewritePath=/auth/(?<path>.*), /$\{path}
         - id: email
@@ -44,7 +50,7 @@ spring:
             - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
             - RewritePath=/email/(?<path>.*), /$\{path}
         - id: openapi
-          uri: https://fast-lake-01538.herokuapp.com
+          uri: http://localhost:8060/
           predicates:
             - Path=/v3/api-docs/**
           filters:
@@ -55,6 +61,7 @@ spring:
 
 springdoc:
   swagger-ui:
+    scheme: [ http,https ]
     urls:
       - name: auth
         url: /v3/api-docs/auth
